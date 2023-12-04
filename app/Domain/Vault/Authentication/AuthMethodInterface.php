@@ -6,7 +6,7 @@ use Illuminate\Http\Client\PendingRequest;
 
 interface AuthMethodInterface
 {
-    public function authenticate(): bool;
+    public function authenticate(): void;
 
     public function setClient(PendingRequest $client): void;
 

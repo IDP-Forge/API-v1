@@ -13,8 +13,8 @@ class Token extends AbstractAuthMethod implements AuthMethodInterface
         $this->token = new AuthToken($token, 0);
     }
 
-    public function authenticate(): bool
+    public function authenticate(): void
     {
-        return true;
+
     }
 }

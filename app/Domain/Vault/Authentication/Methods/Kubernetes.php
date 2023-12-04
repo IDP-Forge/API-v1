@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Http;
 use App\Domain\Vault\Authentication\AuthToken;
 use App\Domain\Vault\Authentication\AbstractAuthMethod;
 use App\Domain\Vault\Authentication\AuthMethodInterface;
+use App\Domain\Vault\Exceptions\AuthenticationException;
 
 class Kubernetes extends AbstractAuthMethod implements AuthMethodInterface
 {
@@ -17,7 +18,7 @@ class Kubernetes extends AbstractAuthMethod implements AuthMethodInterface
         public readonly string $vaultUrl
     ){}
 
-    public function authenticate(): bool
+    public function authenticate(): void
     {
         $response = Http::post($this->getAuthUrl($this->vaultUrl, $this->endpoint), [
             'role' => $this->role,
@@ -36,8 +37,10 @@ class Kubernetes extends AbstractAuthMethod implements AuthMethodInterface
                 'Accept' => 'application/json'
             ]));
         }
-
-        return 200 === $response->status();
+        else
+        {
+            throw new AuthenticationException('Invalid Kubernetes credentials');
+        }
     }
 
     protected function getAuthUrl(string $url, string $path): string

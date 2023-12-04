@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Http;
 use App\Domain\Vault\Authentication\AuthToken;
 use App\Domain\Vault\Authentication\AbstractAuthMethod;
 use App\Domain\Vault\Authentication\AuthMethodInterface;
+use App\Domain\Vault\Exceptions\AuthenticationException;
 
 class UsernamePassword extends AbstractAuthMethod implements AuthMethodInterface
 {
@@ -16,7 +17,7 @@ class UsernamePassword extends AbstractAuthMethod implements AuthMethodInterface
         public readonly string $vaultUrl
     ){}
 
-    public function authenticate(): bool
+    public function authenticate(): void
     {
         $url = $this->getAuthUrl($this->vaultUrl, $this->username);
 
@@ -37,8 +38,10 @@ class UsernamePassword extends AbstractAuthMethod implements AuthMethodInterface
                 'Accept' => 'application/json'
             ]));
         }
-
-        return 200 === $response->status();
+        else
+        {
+            throw new AuthenticationException('Invalid credentials');
+        }
     }
 
     protected function getAuthUrl(string $url, string $username): string
