@@ -27,15 +27,22 @@ class Kubernetes extends AbstractAuthMethod implements AuthMethodInterface
 
         if(200 === $response->status())
         {
+            $this->isAuthenticated = true;
+
             $this->token = new AuthToken(
                 $response->json('auth.client_token'),
                 $response->json('auth.lease_duration')
             );
 
-            $this->setClient(Http::withHeaders([
-                'X-Vault-Token' => $this->token->token,
-                'Accept' => 'application/json'
-            ]));
+            $this->setClient(
+                Http::withHeaders([
+                    'X-Vault-Token' => $this->token->token,
+                    'Accept' => 'application/json'
+                ])
+                    ->withUrlParameters([
+                        'baseUrl' => $this->vaultUrl
+                    ])
+            );
         }
         else
         {

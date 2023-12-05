@@ -6,11 +6,11 @@ use Illuminate\Http\Client\PendingRequest;
 
 interface AuthMethodInterface
 {
+    public const VAULT_BASEURL_PARAM = 'baseUrl';
+
     public function authenticate(): void;
 
-    public function setClient(PendingRequest $client): void;
+    public function getAuthenticatedClient(): PendingRequest;
 
-    public function getClient(): PendingRequest;
-
-    public function getToken(): AuthToken;
+    public function isAuthenticated(): bool;
 }

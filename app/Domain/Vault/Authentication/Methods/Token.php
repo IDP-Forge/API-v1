@@ -15,6 +15,6 @@ class Token extends AbstractAuthMethod implements AuthMethodInterface
 
     public function authenticate(): void
     {
-
+        $this->isAuthenticated = true;
     }
 }
