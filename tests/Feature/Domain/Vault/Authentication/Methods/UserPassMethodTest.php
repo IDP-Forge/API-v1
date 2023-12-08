@@ -5,7 +5,7 @@ namespace Tests\Feature\Domain\Vault\Authentication\Methods;
 use Tests\TestCase;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
-use App\Domain\Vault\Authentication\AuthToken;
+use Illuminate\Http\Client\PendingRequest;
 use App\Domain\Vault\Authentication\Methods\UsernamePassword;
 
 class UserPassMethodTest extends TestCase
@@ -29,6 +29,10 @@ class UserPassMethodTest extends TestCase
 
         $method = new UsernamePassword('username', 'password', 'http://vault.tld/');
 
+        $method->authenticate();
 
+        $client = $method->getAuthenticatedClient();
+
+        $this->assertInstanceOf(PendingRequest::class, $client);
     }
 }
