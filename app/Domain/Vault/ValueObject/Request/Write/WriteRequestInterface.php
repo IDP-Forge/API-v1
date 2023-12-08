@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Vault\ValueObject;
+namespace App\Domain\Vault\ValueObject\Request\Write;
 
-interface WriteValueObjectInterface
+interface WriteRequestInterface
 {
     public function __construct(string $path, array $data);
 

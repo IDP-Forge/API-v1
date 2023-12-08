@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Domain\Vault\ValueObject;
+namespace App\Domain\Vault\ValueObject\Request\Write;
 
-class WriteValueObject extends AbstractValueObject implements WriteValueObjectInterface
+use App\Domain\Vault\ValueObject\Request\AbstractRequest;
+
+class WriteRequest extends AbstractRequest implements WriteRequestInterface
 {
     protected string $path;
     protected array $data;

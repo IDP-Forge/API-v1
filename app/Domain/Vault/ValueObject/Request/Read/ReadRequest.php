@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Domain\Vault\ValueObject;
+namespace App\Domain\Vault\ValueObject\Request\Read;
 
-final class ReadValueObject extends AbstractValueObject implements ReadValueObjectInterface
+use App\Domain\Vault\ValueObject\Request\AbstractRequest;
+
+class ReadRequest extends AbstractRequest implements ReadRequestInterface
 {
     protected string $path;
 

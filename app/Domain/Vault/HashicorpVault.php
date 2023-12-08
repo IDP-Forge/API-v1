@@ -4,11 +4,11 @@ namespace App\Domain\Vault;
 
 use Illuminate\Support\Facades\Cache;
 use App\Domain\Vault\Engine\EngineInterface;
-use App\Domain\Vault\ValueObject\ReadValueObject;
-use App\Domain\Vault\ValueObject\WriteValueObject;
 use App\Domain\Vault\Authentication\AuthMethodInterface;
 use App\Domain\Vault\Exceptions\AuthenticationException;
-use App\Domain\Vault\ValueObject\ResponseValueObjectInterface;
+use App\Domain\Vault\ValueObject\Request\Read\ReadRequest;
+use App\Domain\Vault\ValueObject\Request\Write\WriteRequest;
+use App\Domain\Vault\ValueObject\Response\Read\ReadResponseInterface;
 
 class HashicorpVault
 {
@@ -22,9 +22,9 @@ class HashicorpVault
         public readonly int $authRetries = 2
     ){}
 
-    public function read(string $path): ResponseValueObjectInterface
+    public function read(string $path): ReadResponseInterface
     {
-        $value = new ReadValueObject($path);
+        $value = new ReadRequest($path);
 
         return $this->withReauthentication(function() use ($value)
         {
@@ -34,7 +34,7 @@ class HashicorpVault
 
     public function write(string $path, array $data)
     {
-        $value = new WriteValueObject($path, $data);
+        $value = new WriteRequest($path, $data);
 
         return $this->withReauthentication(function() use ($value)
         {
@@ -52,8 +52,7 @@ class HashicorpVault
         return Cache::get($this->computeHashKey($value));
     }
 
-
-    protected function withReauthentication(\Closure $callable, int $retries = 1): ResponseValueObjectInterface
+    protected function withReauthentication(\Closure $callable, int $retries = 1): ReadResponseInterface
     {
         for($i = 0; $i < $retries; $i++)
         {

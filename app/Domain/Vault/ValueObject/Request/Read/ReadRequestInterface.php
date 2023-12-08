@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Vault\ValueObject;
+namespace App\Domain\Vault\ValueObject\Request\Read;
 
-interface ReadValueObjectInterface
+interface ReadRequestInterface
 {
     public function __construct(string $path);
 

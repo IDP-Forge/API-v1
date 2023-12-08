@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Vault\ValueObject;
+namespace App\Domain\Vault\ValueObject\Response\Read;
 
-class ResponseValueObject implements ResponseValueObjectInterface
+class ReadResponse implements ReadResponseInterface
 {
     public function __construct(
         protected mixed $value,

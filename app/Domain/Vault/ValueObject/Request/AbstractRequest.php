@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Vault\ValueObject;
+namespace App\Domain\Vault\ValueObject\Request;
 
 use App\Domain\Vault\Exceptions\InvalidVaultPath;
 
-class AbstractValueObject
+class AbstractRequest
 {
     protected const VAULT_PROTO = 'vault://';
 

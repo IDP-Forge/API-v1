@@ -14,7 +14,7 @@ class UserPassMethodTest extends TestCase
     {
         Http::fake([
             'vault.tld/*' => Http::response([
-                'request_id' => '',
+                'request_id' => '123-456-789',
                 'lease_id' => null,
                 'renewable' => '',
                 'data' => '',
@@ -29,9 +29,6 @@ class UserPassMethodTest extends TestCase
 
         $method = new UsernamePassword('username', 'password', 'http://vault.tld/');
 
-//        $result = $method->authenticate();
-//
-//        $this->assertTrue($result);
-//        $this->assertInstanceOf(AuthToken::class, $method->getToken());
+
     }
 }

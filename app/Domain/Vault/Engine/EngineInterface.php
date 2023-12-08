@@ -2,11 +2,11 @@
 
 namespace App\Domain\Vault\Engine;
 
-use Illuminate\Http\Client\PendingRequest;
 use App\Domain\Vault\Authentication\AuthMethodInterface;
-use App\Domain\Vault\ValueObject\ReadValueObjectInterface;
-use App\Domain\Vault\ValueObject\WriteValueObjectInterface;
-use App\Domain\Vault\ValueObject\ResponseValueObjectInterface;
+use App\Domain\Vault\ValueObject\Request\Read\ReadRequestInterface;
+use App\Domain\Vault\ValueObject\Response\Read\ReadResponseInterface;
+use App\Domain\Vault\ValueObject\Request\Write\WriteRequestInterface;
+use App\Domain\Vault\ValueObject\Response\Write\WriteResponseInterface;
 
 interface EngineInterface
 {
@@ -14,7 +14,7 @@ interface EngineInterface
         AuthMethodInterface $auth
     );
 
-    public function read(ReadValueObjectInterface $read): ResponseValueObjectInterface;
+    public function read(ReadRequestInterface $read): ReadResponseInterface;
 
-    public function write(WriteValueObjectInterface $write);
+    public function write(WriteRequestInterface $write): WriteResponseInterface;
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Vault\ValueObject;
+namespace App\Domain\Vault\ValueObject\Response\Read;
 
-interface ResponseValueObjectInterface
+interface ReadResponseInterface
 {
     public function getValue(): mixed;
 

@@ -4,24 +4,27 @@ namespace App\Domain\Vault\Engine\KeyValueV2;
 
 use Illuminate\Http\Client\PendingRequest;
 use App\Domain\Vault\Engine\EngineInterface;
-use App\Domain\Vault\ValueObject\ResponseValueObject;
 use App\Domain\Vault\Authentication\AuthMethodInterface;
-use App\Domain\Vault\ValueObject\ReadValueObjectInterface;
-use App\Domain\Vault\ValueObject\WriteValueObjectInterface;
+use App\Domain\Vault\ValueObject\Response\Read\ReadResponse;
+use App\Domain\Vault\ValueObject\Response\Write\WriteResponse;
+use App\Domain\Vault\ValueObject\Request\Read\ReadRequestInterface;
+use App\Domain\Vault\ValueObject\Response\Read\ReadResponseInterface;
+use App\Domain\Vault\ValueObject\Request\Write\WriteRequestInterface;
+use App\Domain\Vault\ValueObject\Response\Write\WriteResponseInterface;
 
-class KeyValueV2 implements EngineInterface
+readonly class KeyValueV2 implements EngineInterface
 {
     public function __construct(
-        public readonly AuthMethodInterface $auth
+        public AuthMethodInterface $auth
     ){}
 
-    public function read(ReadValueObjectInterface $read): ResponseValueObject
+    public function read(ReadRequestInterface $read): ReadResponseInterface
     {
         [$valueKey, $apiPath] = $this->getPathAndKey($read);
 
         $response = $this->getVaultClient()->get($apiPath);
 
-        return new ResponseValueObject(
+        return new ReadResponse(
             $response->json('data.data.'. $valueKey),
             200 === $response->status(),
             $response->status(),
@@ -33,7 +36,7 @@ class KeyValueV2 implements EngineInterface
         );
     }
 
-    public function write(WriteValueObjectInterface $write)
+    public function write(WriteRequestInterface $write): WriteResponseInterface
     {
         $client = $this->getVaultClient();
 
@@ -41,12 +44,19 @@ class KeyValueV2 implements EngineInterface
 
         $response = $client->post($path, $write->getValue());
 
-        print_r($response->status(), $response->json());
-
-        // return $this->client->post('{+baseUrl}/'. $path, ['data' => $write->getValue()]);
+        return new WriteResponse(
+            $response->status(),
+            $response->json('request_id'),
+            (bool)$response->json('renewable', false),
+            (int)$response->json('lease_duration', 0),
+            $response->json('data'),
+            $response->json('wrap_info'),
+            $response->json('warnings'),
+            $response->json('auth')
+        );
     }
 
-    protected function getPathAndKey(ReadValueObjectInterface $read): array
+    protected function getPathAndKey(ReadRequestInterface $read): array
     {
         $api_path = $this->getVaultKvAPIPath($read->getPath());
 
@@ -55,7 +65,7 @@ class KeyValueV2 implements EngineInterface
         return [$key, '{+baseUrl}/'. implode('/', $api_path)];
     }
 
-    public function getWriteAPIPath(WriteValueObjectInterface $write): string
+    public function getWriteAPIPath(WriteRequestInterface $write): string
     {
         return '{+baseUrl}/'. implode('/', $this->getVaultKvAPIPath($write->getPath()));
     }
