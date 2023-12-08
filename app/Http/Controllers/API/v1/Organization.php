@@ -11,7 +11,6 @@ use App\Http\Requests\API\v1\Organization\Delete;
 use App\Http\Requests\API\v1\Organization\ReadRoles;
 use App\Http\Requests\API\v1\Organization\CreateRole;
 use App\Http\Requests\API\v1\Organization\CreatePermission;
-use App\Domain\Http\DTO\Organization\ListOrganizationParams;
 use App\Domain\Http\Actions\API\v1\Organization\ReadAccounts;
 use App\Domain\Http\Actions\API\v1\Organization\RemoveAccount;
 use App\Domain\Http\Actions\API\v1\Organization\Listing\Listing;
@@ -21,6 +20,7 @@ use App\Domain\Http\Actions\API\v1\Organization\UpdateOrganization;
 use App\Domain\Http\Actions\API\v1\Organization\DeleteOrganization;
 use App\Domain\Http\Actions\API\v1\Organization\ReadOrganizationRoles;
 use App\Domain\Http\Actions\API\v1\Organization\CreateOrganizationRole;
+use App\Domain\Http\Actions\API\v1\Organization\ReadOrganizationChildren;
 use App\Domain\Http\Actions\API\v1\Organization\ReadOrganizationPermissions;
 use App\Domain\Http\Actions\API\v1\Organization\ReadOrganizationAccountRoles;
 use App\Domain\Http\Actions\API\v1\Organization\CreateOrganizationPermission;
@@ -135,6 +135,12 @@ class Organization extends Controller
         , 201);
     }
 
-    public function children()
-    {}
+    public function children(Read $request, int $organization_id, ReadOrganizationChildren $action): JsonResponse
+    {
+        return response()->json(
+            $action
+                ->execute($organization_id)
+                ->getResult()
+        );
+    }
 }
