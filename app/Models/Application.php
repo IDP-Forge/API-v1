@@ -10,4 +10,16 @@ class Application extends Model
     use HasFactory;
 
     protected $table = 'applications';
+
+    public $fillable = [
+        'protocol_id',
+        'active',
+        'title',
+        'description',
+        'config'
+    ];
+
+    protected $casts = [
+        'config' => 'array'
+    ];
 }

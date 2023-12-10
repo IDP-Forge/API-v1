@@ -21,6 +21,7 @@ return new class extends ModellableMigration
             $table->string('title');
             $table->text('description');
             $table->json('config');
+            $table->timestamps();
 
             $table->foreign('protocol_id')->references('id')->on(tableOf(Protocol::class))
             ;
