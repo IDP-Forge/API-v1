@@ -4,6 +4,7 @@ namespace App\Http\Requests\API\v1\OAuth2;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Domain\OAuth2\ValueObject\RequestParams;
+use App\Domain\OAuth2\Protocol\OAuth2Parameters;
 
 class Authorize extends FormRequest
 {
@@ -77,17 +78,18 @@ class Authorize extends FormRequest
     public function getOAuth2RequestValueObject(): RequestParams
     {
         return new RequestParams(
-            grant_type: $this->input('grant_type'),
-            response_type: $this->input('response_type'),
-            client_id: $this->input('client_id'),
-            redirect_uri: $this->input('redirect_uri'),
-            scope: $this->input('scope'),
-            client_secret: $this->input('client_secret'),
-            code_challenge: $this->input('code_challenge'),
-            code_challenge_method: $this->input('code_challenge_method'),
-            code: $this->input('code'),
-            state: $this->input('state'),
-            server_id: $this->input('server_id')
+            grant_type: $this->input(OAuth2Parameters::GrantType->value),
+            response_type: $this->input(OAuth2Parameters::ResponseType->value),
+            client_id: $this->input(OAuth2Parameters::ClientID->value),
+            redirect_uri: $this->input(OAuth2Parameters::RedirectUri->value),
+            scope: $this->input(OAuth2Parameters::Scope->value),
+            client_secret: $this->input(OAuth2Parameters::ClientSecret->value),
+            code_challenge: $this->input(OAuth2Parameters::CodeChallenge->value),
+            code_challenge_method: $this->input(OAuth2Parameters::CodeChallengeMethod->value),
+            code: $this->input(OAuth2Parameters::Code->value),
+            state: $this->input(OAuth2Parameters::State->value),
+            refresh_token: $this->input(OAuth2Parameters::RefreshToken->value),
+            server_id: $this->input(OAuth2Parameters::ServerID)
         );
     }
 }

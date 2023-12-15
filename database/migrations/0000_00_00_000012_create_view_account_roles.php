@@ -21,7 +21,7 @@ return new class extends ModellableMigration
 
     protected function provideCreateViewSQL(): string
     {
-        return <<<EOF
+        return <<<SQL
 CREATE ALGORITHM=MERGE VIEW $this->table AS
 SELECT
     r.id,
@@ -35,7 +35,7 @@ SELECT
 FROM roles r
 
 INNER JOIN accounts2roles a2r ON a2r.role_id = r.id
-EOF;
+SQL;
 
     }
 };

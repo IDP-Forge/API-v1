@@ -15,6 +15,7 @@ readonly class RequestParams
         public ?string $code_challenge_method,
         public ?string $code,
         public ?string $state,
+        public ?string $refresh_token,
         public ?string $server_id // IDPForge extension
     ){}
 }
