@@ -20,6 +20,7 @@ use App\Domain\Http\Actions\API\v1\IdP\{
     Delete\DeleteIdP,
     Deactivate\DeactivateIdP
 };
+use SimpleMehanizm\Http\Protocol\Status\Code;
 
 class IdP extends Controller
 {
@@ -47,7 +48,7 @@ class IdP extends Controller
             $action
                 ->execute($request->getDTO())
                 ->getResult(),
-            201
+            Code::HTTP_CREATED
         );
     }
 

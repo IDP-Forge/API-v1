@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\v1;
 
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use SimpleMehanizm\Http\Protocol\Status\Code;
 use App\Http\Requests\API\v1\Organization\Read;
 use App\Http\Requests\API\v1\Organization\Create;
 use App\Http\Requests\API\v1\Organization\Update;
@@ -51,7 +52,7 @@ class Organization extends Controller
             $action
                 ->execute($request->getDTO())
                 ->getResult()
-        , 201);
+        , Code::HTTP_CREATED);
     }
 
     public function update(Update $request, int $id, UpdateOrganization $action): JsonResponse
@@ -105,7 +106,7 @@ class Organization extends Controller
             $action
                 ->execute($organization_id, $request->getDTO())
                 ->getResult()
-        , 201);
+        , Code::HTTP_CREATED);
     }
 
     public function accountRoles(Read $request, int $organization_id, int $account_id, ReadOrganizationAccountRoles $action): JsonResponse
@@ -132,7 +133,7 @@ class Organization extends Controller
             $action
                 ->execute($organization_id, $request->getDTO())
                 ->getResult()
-        , 201);
+        , Code::HTTP_CREATED);
     }
 
     public function children(Read $request, int $organization_id, ReadOrganizationChildren $action): JsonResponse

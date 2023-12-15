@@ -4,8 +4,8 @@ namespace App\Http\Controllers\API\v1;
 
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
+use SimpleMehanizm\Http\Protocol\Status\Code;
 use App\Http\Requests\API\v1\Applications\Create;
-use App\Domain\Http\DTO\Application\CreateAppDTO;
 use App\Http\Requests\API\v1\Applications\ReadTypes;
 use App\Domain\Http\Actions\API\v1\Applications\ReadAppTypes;
 use App\Domain\Http\Actions\API\v1\Applications\CreateApplication;
@@ -27,6 +27,6 @@ class Applications extends Controller
             $action
                 ->execute($request->getDTO())
                 ->getResult()
-        , 201);
+        , Code::HTTP_CREATED);
     }
 }

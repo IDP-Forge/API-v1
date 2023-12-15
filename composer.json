@@ -10,7 +10,9 @@
         "laravel/framework": "^10.10",
         "laravel/tinker": "^2.8",
         "mittwald/vault-php": "^0.0.1",
-        "predis/predis": "^2.2"
+        "predis/predis": "^2.2",
+        "simplemehanizm/http": "^1.0",
+        "simplemehanizm/pipeline": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

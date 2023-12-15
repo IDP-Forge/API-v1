@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c9947a134299547ede1f1995c9234209",
+    "content-hash": "34f6ab5ef18c10dfc441ad3d4d706a7f",
     "packages": [
         {
             "name": "brick/math",
@@ -3260,6 +3260,130 @@
                 }
             ],
             "time": "2023-11-08T05:53:05+00:00"
+        },
+        {
+            "name": "simplemehanizm/array",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SimpleMehanizm/Array.git",
+                "reference": "a0db0e62caa971ec353cb396c591dea02201781b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SimpleMehanizm/Array/zipball/a0db0e62caa971ec353cb396c591dea02201781b",
+                "reference": "a0db0e62caa971ec353cb396c591dea02201781b",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Functions/readValue.php",
+                    "src/Functions/arrayKeyExists.php"
+                ],
+                "psr-4": {
+                    "SimpleMehanizm\\Array\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "N.B"
+                }
+            ],
+            "description": "Set of utility functions for array operations",
+            "support": {
+                "issues": "https://github.com/SimpleMehanizm/Array/issues",
+                "source": "https://github.com/SimpleMehanizm/Array/tree/v1.0.0"
+            },
+            "time": "2023-12-13T16:15:28+00:00"
+        },
+        {
+            "name": "simplemehanizm/http",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SimpleMehanizm/Http.git",
+                "reference": "90c616e4caad9577802bfc2c529ca43b9f046636"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SimpleMehanizm/Http/zipball/90c616e4caad9577802bfc2c529ca43b9f046636",
+                "reference": "90c616e4caad9577802bfc2c529ca43b9f046636",
+                "shasum": ""
+            },
+            "require": {
+                "simplemehanizm/array": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^10.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "./functions/get_http_headers.php"
+                ],
+                "psr-4": {
+                    "SimpleMehanizm\\Http\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "N.B."
+                }
+            ],
+            "description": "HTTP library",
+            "support": {
+                "issues": "https://github.com/SimpleMehanizm/Http/issues",
+                "source": "https://github.com/SimpleMehanizm/Http/tree/v1.0.0.0"
+            },
+            "time": "2023-12-13T16:42:59+00:00"
+        },
+        {
+            "name": "simplemehanizm/pipeline",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SimpleMehanizm/Pipeline.git",
+                "reference": "869145fab4d35530927c9ef5bff7d9242be932fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SimpleMehanizm/Pipeline/zipball/869145fab4d35530927c9ef5bff7d9242be932fc",
+                "reference": "869145fab4d35530927c9ef5bff7d9242be932fc",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SimpleMehanizm\\Pipeline\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "N.B."
+                }
+            ],
+            "description": "Define pipelines using array of stages",
+            "support": {
+                "issues": "https://github.com/SimpleMehanizm/Pipeline/issues",
+                "source": "https://github.com/SimpleMehanizm/Pipeline/tree/v1.0.0"
+            },
+            "time": "2023-12-15T16:36:31+00:00"
         },
         {
             "name": "symfony/console",
@@ -7727,5 +7851,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

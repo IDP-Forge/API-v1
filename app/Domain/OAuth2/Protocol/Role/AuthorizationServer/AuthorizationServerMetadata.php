@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\OAuth2\Server;
+namespace App\Domain\OAuth2\Protocol\Role\AuthorizationServer;
 
 use App\Domain\OAuth2\Protocol\Role\AuthorizationServer\MetadataValues\{
     Issuer,
