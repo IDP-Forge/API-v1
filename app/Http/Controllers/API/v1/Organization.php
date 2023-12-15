@@ -52,7 +52,7 @@ class Organization extends Controller
             $action
                 ->execute($request->getDTO())
                 ->getResult()
-        , Code::HTTP_CREATED);
+        , Code::HTTP_CREATED->value);
     }
 
     public function update(Update $request, int $id, UpdateOrganization $action): JsonResponse
@@ -106,7 +106,7 @@ class Organization extends Controller
             $action
                 ->execute($organization_id, $request->getDTO())
                 ->getResult()
-        , Code::HTTP_CREATED);
+        , Code::HTTP_CREATED->value);
     }
 
     public function accountRoles(Read $request, int $organization_id, int $account_id, ReadOrganizationAccountRoles $action): JsonResponse
@@ -133,7 +133,7 @@ class Organization extends Controller
             $action
                 ->execute($organization_id, $request->getDTO())
                 ->getResult()
-        , Code::HTTP_CREATED);
+        , Code::HTTP_CREATED->value);
     }
 
     public function children(Read $request, int $organization_id, ReadOrganizationChildren $action): JsonResponse

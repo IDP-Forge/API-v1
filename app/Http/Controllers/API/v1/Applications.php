@@ -27,6 +27,6 @@ class Applications extends Controller
             $action
                 ->execute($request->getDTO())
                 ->getResult()
-        , Code::HTTP_CREATED);
+        , Code::HTTP_CREATED->value);
     }
 }

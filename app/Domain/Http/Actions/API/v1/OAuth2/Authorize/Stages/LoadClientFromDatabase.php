@@ -2,7 +2,6 @@
 
 namespace App\Domain\Http\Actions\API\v1\OAuth2\Authorize\Stages;
 
-use App\Models\OAuth2\Client;
 use App\Models\Views\ViewApplication;
 use App\Domain\Http\Actions\API\v1\OAuth2\Authorize\AuthorizeState;
 
