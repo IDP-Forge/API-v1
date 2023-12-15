@@ -20,7 +20,7 @@ return new class extends ModellableMigration
 
     protected function provideCreateViewSQL(): string
     {
-        return <<<EOF
+        return <<<SQL
 CREATE VIEW $this->table AS
 
 WITH RECURSIVE organization_hierarchy AS (
@@ -51,7 +51,7 @@ WITH RECURSIVE organization_hierarchy AS (
 
 )  SELECT * FROM organization_hierarchy
 
-EOF;
+SQL;
 
     }
 };

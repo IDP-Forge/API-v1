@@ -2,8 +2,8 @@
 
 use App\Models\Protocol;
 use App\Models\Application;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use App\Extensions\Database\ModellableMigration;
 use function App\Helpers\tableOf;
 
@@ -23,8 +23,7 @@ return new class extends ModellableMigration
             $table->json('config');
             $table->timestamps();
 
-            $table->foreign('protocol_id')->references('id')->on(tableOf(Protocol::class))
-            ;
+            $table->foreign('protocol_id')->references('id')->on(tableOf(Protocol::class));
         });
     }
 

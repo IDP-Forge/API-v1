@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\OAuth2\Server\MetadataValues;
+namespace App\Domain\OAuth2\Protocol\Role\AuthorizationServer\MetadataValues;
 
 readonly class Issuer
 {

@@ -2,28 +2,30 @@
 
 namespace App\Domain\OAuth2\Server;
 
-use App\Domain\OAuth2\Server\MetadataValues\Issuer;
-use App\Domain\OAuth2\Server\MetadataValues\JWKSUri;
-use App\Domain\OAuth2\Server\MetadataValues\OpTosUri;
-use App\Domain\OAuth2\Server\MetadataValues\OpPolicyUri;
-use App\Domain\OAuth2\Server\MetadataValues\TokenEndpoint;
-use App\Domain\OAuth2\Server\MetadataValues\ScopesSupported;
-use App\Domain\OAuth2\Server\MetadataValues\UiLocalesSupported;
-use App\Domain\OAuth2\Server\MetadataValues\RevocationEndpoint;
-use App\Domain\OAuth2\Server\MetadataValues\GrantTypesSupported;
-use App\Domain\OAuth2\Server\MetadataValues\RegistrationEndpoint;
-use App\Domain\OAuth2\Server\MetadataValues\ServiceDocumentation;
-use App\Domain\OAuth2\Server\MetadataValues\AuthorizationEndpoint;
-use App\Domain\OAuth2\Server\MetadataValues\IntrospectionEndpoint;
-use App\Domain\OAuth2\Server\MetadataValues\ResponseTypesSupported;
-use App\Domain\OAuth2\Server\MetadataValues\ResponseModesSupported;
-use App\Domain\OAuth2\Server\MetadataValues\CodeChallengeMethodsSupported;
-use App\Domain\OAuth2\Server\MetadataValues\TokenEndpointAuthMethodsSupported;
-use App\Domain\OAuth2\Server\MetadataValues\RevocationEndpointAuthMethodsSupported;
-use App\Domain\OAuth2\Server\MetadataValues\IntrospectionEndpointAuthMethodsSupported;
-use App\Domain\OAuth2\Server\MetadataValues\TokenEndpointAuthSigningAlgValuesSupported;
-use App\Domain\OAuth2\Server\MetadataValues\RevocationEndpointAuthSigningAlgValuesSupported;
-use App\Domain\OAuth2\Server\MetadataValues\IntrospectionEndpointAuthSigningAlgValuesSupported;
+use App\Domain\OAuth2\Protocol\Role\AuthorizationServer\MetadataValues\{
+    Issuer,
+    JWKSUri,
+    OpTosUri,
+    OpPolicyUri,
+    TokenEndpoint,
+    ScopesSupported,
+    UiLocalesSupported,
+    RevocationEndpoint,
+    GrantTypesSupported,
+    RegistrationEndpoint,
+    ServiceDocumentation,
+    AuthorizationEndpoint,
+    IntrospectionEndpoint,
+    ResponseTypesSupported,
+    ResponseModesSupported,
+    CodeChallengeMethodsSupported,
+    TokenEndpointAuthMethodsSupported,
+    RevocationEndpointAuthMethodsSupported,
+    IntrospectionEndpointAuthMethodsSupported,
+    TokenEndpointAuthSigningAlgValuesSupported,
+    RevocationEndpointAuthSigningAlgValuesSupported,
+    IntrospectionEndpointAuthSigningAlgValuesSupported
+};
 
 readonly class AuthorizationServerMetadata
 {
