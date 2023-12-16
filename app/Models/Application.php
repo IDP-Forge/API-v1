@@ -12,6 +12,7 @@ class Application extends Model
     protected $table = 'applications';
 
     public $fillable = [
+        'provider_id',
         'protocol_id',
         'active',
         'title',
